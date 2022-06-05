@@ -1,6 +1,9 @@
-const Plot = ({ position, size, landId, landInfo, setLandName, setLandOwner, setHasOwner, setLandId}) => {
-    const clickHandler = () => {
-        setLandName(landInfo.name)
+
+
+
+const Plot = ({ position, size, landId, landInfo, setLandName, setLandOwner, setHasOwner, setLandId }) => {
+    const clickHandler = () => { //cuando el usuario clickea
+        setLandName(landInfo.name)  //sabremos cual es la land q quiere comprar
         setLandId(landId)
 
         if (landInfo.owner === '0x0000000000000000000000000000000000000000') {
@@ -12,7 +15,12 @@ const Plot = ({ position, size, landId, landInfo, setLandName, setLandOwner, set
         }
     }
 
-    return(
-        <mesh position={position} onClick={clickHandler}/>
-    )
+    return (
+        <mesh position={position} onClick={clickHandler}>
+            <planeBufferGeometry attach="geometry" args={size} />
+            <meshStandardMaterial color={"#11E169"} metalness={0.5} roughness={0} />
+        </mesh>
+    );
 }
+
+export default Plot;
